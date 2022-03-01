@@ -1,0 +1,59 @@
+﻿@model EntityLayer.Concrete.Kitap
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Detay", "Kitap", FormMethod.Post))
+{
+<div class="form-group">
+
+    @Html.Label("Kitap Adı")
+    @Html.TextBoxFor(x => x.kitapbasligi, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.kitapbasligi)
+    <br /> <br />
+
+    @Html.Label("ISBN", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.ISBN)
+    @Html.ValidationMessageFor(x => x.ISBN)
+    <br /> <br />
+
+    @Html.Label("Yayın Tarihi", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.yayinyili, "{0:yyyy-MM-dd}", new { type = "date" })
+    @Html.ValidationMessageFor(x => x.yayinyili)
+    <br /> <br />
+
+    @Html.Label("Fiyat", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.fiyat)
+    @Html.ValidationMessageFor(x => x.fiyat)
+    <br /> <br />
+    @Html.Label("Durum", new { @class = "form-control" })
+    @Html.CheckBoxFor(x => x.check)
+    @Html.ValidationMessageFor(x => x.check)
+    <br /> <br />
+
+    @Html.Label("Alıcı adı", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.Alici.aliciadi)
+    @Html.ValidationMessageFor(x => x.Alici.aliciadi)
+    <br /> <br />
+
+    @Html.Label("Alıcı TÜRKİYE CUMHURİYETİ kimlik kart numarası", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.Alici.alicitc)
+    @Html.ValidationMessageFor(x => x.Alici.alicitc)
+    <br /> <br />
+
+    @Html.Label("Alıcı Telefon Numarası", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.Alici.alicitelefon)
+    @Html.ValidationMessageFor(x => x.Alici.alicitelefon)
+    <br /> <br />
+
+    @Html.Label("Veriliş Tarihi", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.verilistarihi, "{0:yyyy-MM-dd}", new { type = "date" })
+    @Html.ValidationMessageFor(x => x.verilistarihi)
+    <br /> <br />
+
+
+
+</div>
+}

@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Kitap
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm("KitapIslemIade", "Kitap", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Kitap Adı")
+        @Html.TextBoxFor(x => x.kitapbasligi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.kitapbasligi)
+        <br /> <br />
+
+
+        @Html.Label("Alıcı Id", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.Alici.aliciid)
+        @Html.ValidationMessageFor(x => x.Alici.aliciid)
+        <br /> <br />
+
+
+      
+
+        @Html.Label("İade Tarihi", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.donustarihi, "{0:yyyy-MM-dd}", new { type = "date" })
+        @Html.ValidationMessageFor(x => x.donustarihi)
+        <br /> <br />
+
+
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+}

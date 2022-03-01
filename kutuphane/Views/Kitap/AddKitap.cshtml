@@ -1,0 +1,52 @@
+﻿@model EntityLayer.Concrete.Kitap
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h1>Yeni Kitap Ekleme</h1>
+
+<br />
+
+@using (Html.BeginForm("AddKitap", "Kitap", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("Kitap Adı")
+    @Html.TextBoxFor(x => x.kitapbasligi, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.kitapbasligi)
+    <br /> <br />
+
+    @Html.Label("ISBN", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.ISBN, new { @maxlength = "8" })
+    @Html.ValidationMessageFor(x => x.ISBN)
+    <br /> <br />
+
+    @Html.Label("Yayın Tarihi", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.yayinyili, ("dd/MM/yyyy"))
+    @Html.ValidationMessageFor(x => x.yayinyili)
+    <br /> <br />
+
+    @Html.Label("Fiyat", new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.fiyat)
+    @Html.ValidationMessageFor(x => x.fiyat)
+    <br /> <br />
+    @Html.Label("Durum", new { @class = "form-control" })
+    @Html.CheckBoxFor(x => x.check)
+    @Html.ValidationMessageFor(x => x.check)
+    <br /> <br />
+    <button class="btn btn-primary">Ekle</button>
+</div>
+}
+
+
+@*<form class="form-group" method="post">
+        <input type="text" placeholder="Kitap Adı" name="kitapbasligi" value="" class="form-control"/>
+        <input type="text" placeholder="ISBN" name="ISBN" value="" class="form-control"/>
+        <input type="date" placeholder="Yayın Tarihi" name="yayinyili" value="" class="form-control"/>
+        <input type="text" placeholder="Fiyat" name="fiyat" value="" class="form-control"/>
+
+        <br />
+        <button class="btn btn-primary">Ekle</button>
+    </form>*@

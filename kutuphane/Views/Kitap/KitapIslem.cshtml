@@ -1,0 +1,77 @@
+﻿@model EntityLayer.Concrete.Kitap
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm("KitapIslem", "Kitap", FormMethod.Post))
+{
+    <div class="form-group">
+        <h1>Kitap alındıktan sonra 15 gün içerisinde getirilmelidir.</h1>
+        <h1>Aksi taktirde geciken gün başına birikecek ceza tutarı adınıza faturandırılır.</h1>
+        @Html.Label("Kitap Adı")
+        @Html.TextBoxFor(x => x.kitapbasligi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.kitapbasligi)
+        <br /> <br />
+
+        @Html.Label("ISBN", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.ISBN)
+        @Html.ValidationMessageFor(x => x.ISBN)
+        <br /> <br />
+
+        @Html.Label("Yayın Tarihi", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.yayinyili, "{0:yyyy-MM-dd}", new { type = "date" })
+        @Html.ValidationMessageFor(x => x.yayinyili)
+        <br /> <br />
+
+        @Html.Label("Fiyat", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.fiyat)
+        @Html.ValidationMessageFor(x => x.fiyat)
+        <br /> <br />
+
+        @Html.Label("Alıcı adı", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.Alici.aliciadi)
+        @Html.ValidationMessageFor(x => x.Alici.aliciadi)
+        <br /> <br />
+
+        @Html.Label("Alıcı TÜRKİYE CUMHURİYETİ kimlik kart numarası", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.Alici.alicitc, new { @maxlength = "8" })
+        @Html.ValidationMessageFor(x => x.Alici.alicitc)
+        <br /> <br />
+
+        @Html.Label("Alıcı Telefon Numarası", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.Alici.alicitelefon, new { @maxlength = "8" })
+        @Html.ValidationMessageFor(x => x.Alici.alicitelefon)
+        <br /> <br />
+
+        @Html.Label("Veriliş Tarihi", new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.verilistarihi, "{0:yyyy-MM-dd}", new { type = "date" })
+        @Html.ValidationMessageFor(x => x.verilistarihi)
+        <br /> <br />
+
+
+        <button class="btn btn-primary">Güncelle</button>
+    </div>
+}
+
+@*
+                ,new { @maxlength = "8" } şeklinde iş kuralı yanlış yerde tanımlandı
+                "{0:yyyy-MM-dd}", new { type = "date" } kısmını da burada tanımladık
+
+            RegularExpression ile telefon numarası düzeni
+                public class MyModel
+            {
+                // The regex maches this pattern: "+1 (xxx) xxx-xxxx"
+                [RegularExpression(@"^\+1 \(\d{3}\) \d{3}-\d{4}$", ErrorMessage = "Invalid Phone Number.")]
+                public string PhoneNumber { get; set; }
+            }
+            ---
+            @Html.TextBoxFor(model => model.PhoneNumber)
+        @Html.ValidationMessageFor(model => model.PhoneNumber)
+
+    ------
+        <input type="text" name="Phone Number" pattern="[7-9]{1}[0-9]{9}"
+           title="Phone number with 7-9 and remaing 9 digit with 0-9">
+    input hali örneği
+*@

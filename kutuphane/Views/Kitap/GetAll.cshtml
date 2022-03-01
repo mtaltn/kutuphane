@@ -1,0 +1,50 @@
+﻿@using EntityLayer.Concrete
+@model List<Kitap>
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<div class="container ">
+    <div class="row">
+        <div class="col">
+            <a href="/Kitap/AddKitap" class="btn btn-info">Yeni Kitap</a>
+            <table class="table table-hover">
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Kitap Başlığı</th>
+                    <th>ISBN</th>
+                    <th>Yayın Tarihi</th>
+                    <th>Fiyat</th>
+                    <th>Durum</th>
+                    <th>Silme</th>
+                    <th>Güncelleme</th>
+                    <th>İşlem</th>
+                    <th>Detay</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <th>@item.Id</th>
+                        <td>@item.kitapbasligi</td>
+                        <td>@item.ISBN</td>
+                        <td>@item.yayinyili.ToString("MM/dd/yyyy")</td>
+                        <td>@item.fiyat</td>
+                        <td>@item.check</td>
+                        <td><a href="/Kitap/KitapRemove/@item.Id" class="btn btn-danger">Sil</a></td>
+                        <td><a href="/Kitap/KitapEdit/@item.Id" class="btn btn-warning">Güncelle</a></td>
+                        <td>
+                            <a href="/Kitap/KitapIslem/@item.Id" class="btn btn-primary">Teslim Et</a>
+                            <a href="/Kitap/KitapIslemIade/@item.Id" class="btn btn-primary">İade</a>
+                        </td>
+                        <td><a href="/Kitap/Detay/@item.Id" class="btn btn-info">Detay</a></td>
+
+
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
