@@ -23,10 +23,11 @@
                     <th>İşlem</th>
                     <th>Detay</th>
                 </tr>
+                @{int t = 1 ;}
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td></td>
+                        <td>@(t++)</td>
                         <th>@item.Id</th>
                         <td>@item.kitapbasligi</td>
                         <td>@item.ISBN</td>
